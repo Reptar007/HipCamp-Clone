@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import db,Campground, Activity, Amenity
+from app.models import db,Campground, Activity, Amenity, Review, CampgroundImage
 from app.forms.campgrounds_form import CampgroundForm
 
 campground_routes = Blueprint('campgrounds', __name__)
@@ -20,13 +20,32 @@ def validation_errors_to_error_messages(validation_errors):
 @login_required
 def all_campgrounds():
     all_campgrounds = Campground.query.all()
-    return {'campgrounds': [campground.to_dict() for campground in all_campgrounds]}
+    campgrounds = []
+    for campground in all_campgrounds:
+        camp = campground.to_dict()
+        ratings = Review.query.filter_by(campground_id=camp['id']).all()
+        sum_rating = 0
+        for rating in ratings:
+            sum_rating += rating.to_dict()['rating']
+        avg_rating = round((sum_rating / len(ratings)), 2)
+        images = CampgroundImage.query.filter_by(campground_id=camp['id']).all()
+        camp['avg_rating'] = avg_rating
+        camp['images'] = [image.to_dict() for image in images]
+        campgrounds.append(camp)
+    
+    return {'campgrounds' :[camps for camps in campgrounds]}
 
 @campground_routes.route('/<int:id>')
 @login_required
 def single_camground(id):
     single_camground = Campground.query.get(id)
-    return {'campground': single_camground.to_dict()}
+    ratings = Review.query.filter_by(campground_id=id).all()
+    sum_rating = 0
+    for rating in ratings:
+        sum_rating += rating.to_dict()['rating']
+    avg_rating = round((sum_rating / len(ratings)), 2)
+    images = CampgroundImage.query.filter_by(campground_id=id).all()
+    return {'campground': single_camground.to_dict(), 'avg rating': avg_rating, 'images': [image.to_dict() for image in images]}
 
 @campground_routes.route('/host', methods=['POST'])
 @login_required
