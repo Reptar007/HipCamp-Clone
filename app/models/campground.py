@@ -48,15 +48,13 @@ class Campground(db.Model):
     activity = db.relationship('Activity',
             secondary = campground_activities,
             back_populates = 'campground',
-            lazy = False,
-            cascade = 'all, delete'
+            lazy = False
         )
     
     amenity = db.relationship('Amenity',
             secondary = campground_amenities,
             back_populates = 'campground',
-            lazy = False,
-            cascade = 'all, delete'
+            lazy = False
         )
 
     def to_dict(self):

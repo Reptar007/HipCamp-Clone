@@ -1,8 +1,8 @@
 """create all tables
 
-Revision ID: 646528f62936
+Revision ID: 4cfddd1db033
 Revises: 
-Create Date: 2022-11-23 01:54:33.720094
+Create Date: 2022-11-23 14:45:08.575982
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '646528f62936'
+revision = '4cfddd1db033'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -39,11 +39,11 @@ def upgrade():
     )
     op.create_table('campgrounds',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(), nullable=False),
+    sa.Column('location', sa.String(), nullable=False),
     sa.Column('acres', sa.Integer(), nullable=False),
     sa.Column('capacity', sa.Integer(), nullable=False),
     sa.Column('host_id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(), nullable=False),
-    sa.Column('location', sa.String(), nullable=False),
     sa.Column('price', sa.Float(), nullable=False),
     sa.Column('lat', sa.Float(), nullable=False),
     sa.Column('lng', sa.Float(), nullable=False),

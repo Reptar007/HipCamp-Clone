@@ -13,8 +13,7 @@ class Activity(db.Model):
     campground = db.relationship('Campground',
             secondary = campground_activities,
             back_populates = 'activity',
-            lazy = False,
-            cascade = 'all, delete'
+            lazy = False
         )
     
     def to_dict(self):
