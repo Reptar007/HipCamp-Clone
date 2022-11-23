@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import db,Campground, CampgroundImage, Activity, Amenity,campground_activities,campground_amenities
+from app.models import db,Campground, Activity, Amenity
 from app.forms.campgrounds_form import CampgroundForm
 
 campground_routes = Blueprint('campgrounds', __name__)

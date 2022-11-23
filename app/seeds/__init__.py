@@ -1,6 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .campgrounds import seed_campgrounds, undo_campgrounds, undo_campgroundsImages, undo_campground_activities, undo_campground_amenities, undo_amenities, undo_activities
+from .reviews import seed_reviews, undo_reviews
 
 from app.models.db import db, environment, SCHEMA
 
@@ -22,10 +23,12 @@ def seed():
         undo_campgroundsImages()
         undo_campground_amenities()
         undo_campground_activities()
+        undo_reviews()
         undo_activities()
         undo_amenities()
     seed_users()
     seed_campgrounds()
+    seed_reviews()
     # Add other seed functions here
 
 
@@ -38,5 +41,6 @@ def undo():
     undo_campground_amenities()
     undo_campground_activities()
     undo_activities()
+    undo_reviews()
     undo_amenities()
     # Add other undo functions here
