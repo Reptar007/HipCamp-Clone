@@ -10,9 +10,9 @@ class Activity(db.Model):
     id  = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
 
-    activity = db.relationship('Campground',
+    campground = db.relationship('Campground',
             secondary = campground_activities,
-            back_populates = 'campground',
+            back_populates = 'activity',
             lazy = False,
             cascade = 'all, delete'
         )

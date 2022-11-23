@@ -10,9 +10,9 @@ class Amenity(db.Model):
     id  = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
 
-    amenity = db.relationship('Campground',
+    campground = db.relationship('Campground',
             secondary = campground_amenities,
-            back_populates = 'spot',
+            back_populates = 'amenity',
             lazy = False,
             cascade = 'all, delete'
         )

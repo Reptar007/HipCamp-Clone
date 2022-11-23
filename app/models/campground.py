@@ -1,8 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from sqlalchemy.schema import Column, ForeignKey, Table
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
+from sqlalchemy.schema import Table
 
 campground_amenities = Table(
     "campground_amenities",
@@ -31,15 +28,14 @@ class Campground(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    acres = db.Column(db.Integer, nullable=False)
-    capacity = db.Column(db.Integer, nullable=False)
-    avg_rating = db.Column(db.Float, nullable=False)
-    host_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     name = db.Column(db.String, nullable=False)
     location = db.Column(db.String, nullable=False)
+    acres = db.Column(db.Integer, nullable=False)
+    capacity = db.Column(db.Integer, nullable=False)
+    host_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     price = db.Column(db.Float, nullable=False)
     lat = db.Column(db.Float, nullable=False)
-    lng = db.Column(db.Float, nullabel=False)
+    lng = db.Column(db.Float, nullable=False)
     min_nights = db.Column(db.Integer, nullable=False)
     max_nights = db.Column(db.Integer, nullable=False)
     checkin_time = db.Column(db.String, nullable=False)
@@ -49,16 +45,16 @@ class Campground(db.Model):
     host = db.relationship("User", back_populates='spot')
     image = db.relationship("CampgroundImage", back_populates='spot', cascade="all, delete")
 
-    campground = db.relationship('Activity',
+    activity = db.relationship('Activity',
             secondary = campground_activities,
-            back_populates = 'activity',
+            back_populates = 'campground',
             lazy = False,
             cascade = 'all, delete'
         )
     
-    spot = db.relationship('Amenity',
+    amenity = db.relationship('Amenity',
             secondary = campground_amenities,
-            back_populates = 'amenity',
+            back_populates = 'campground',
             lazy = False,
             cascade = 'all, delete'
         )
@@ -68,7 +64,6 @@ class Campground(db.Model):
             'id': self.id,
             'acres': self.acres,
             'capacity': self.capacity,
-            'avg_rating': self.avg_rating,
             'host': self.host_id,
             'name': self.name,
             'location': self.location,
@@ -79,5 +74,7 @@ class Campground(db.Model):
             'max_nights': self.max_nights,
             'checkin_time': self.checkin_time,
             'checkout_time': self.checkout_time,
-            'description': self.description
+            'description': self.description,
+            'Amenities': [amenity.to_dict() for amenity in self.amenity],
+            'Activites': [activity.to_dict() for activity in self.activity]
         }
