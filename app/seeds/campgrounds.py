@@ -213,10 +213,10 @@ def undo_campgrounds():
 def undo_campgroundsImages():
     if environment == 'production':
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.campgroundImages RESTART IDENTITY CASCADE;"
+            f"TRUNCATE table {SCHEMA}.campgroundimages RESTART IDENTITY CASCADE;"
         )
     else:
-        db.session.execute('DELETE FROM campgroundImages')
+        db.session.execute('DELETE FROM campgroundimages')
 
     db.session.commit()
 

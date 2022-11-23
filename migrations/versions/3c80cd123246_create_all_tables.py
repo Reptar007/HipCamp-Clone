@@ -71,7 +71,7 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE campgrounds SET SCHEMA {SCHEMA};")
 
-    op.create_table('campgroundImages',
+    op.create_table('campgroundimages',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('campground_id', sa.Integer(), nullable=False),
     sa.Column('image_url', sa.String(), nullable=False),
@@ -80,7 +80,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE campgroundImages SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE campgroundimages SET SCHEMA {SCHEMA};")
 
     op.create_table('campground_activities',
     sa.Column('campgroundId', sa.Integer(), nullable=True),
@@ -121,7 +121,7 @@ def downgrade():
     op.drop_table('reviews')
     op.drop_table('campground_amenities')
     op.drop_table('campground_activities')
-    op.drop_table('campgroundImages')
+    op.drop_table('campgroundimages')
     op.drop_table('campgrounds')
     op.drop_table('users')
     op.drop_table('amenities')
