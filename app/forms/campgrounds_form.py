@@ -10,8 +10,6 @@ class CampgroundForm(FlaskForm):
     capacity = IntegerField('capacity', validators=[DataRequired()])
     host_id = IntegerField('host_id')
     price = FloatField('price', validators=[DataRequired()])
-    lat = FloatField('lat', validators=[DataRequired()])
-    lng = FloatField('lng', validators=[DataRequired()])
     min_nights = IntegerField('min_nights', validators=[DataRequired()])
     max_nights = IntegerField('max_nights', validators=[DataRequired()])
     checkin_time = StringField('checkin_time',validators=[DataRequired()])
