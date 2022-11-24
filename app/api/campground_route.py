@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import db,Campground, Activity, Amenity
+from app.models import db,Campground, Activity, Amenity, Review, CampgroundImage
 from app.forms.campgrounds_form import CampgroundForm
 
 campground_routes = Blueprint('campgrounds', __name__)
@@ -19,15 +19,18 @@ def validation_errors_to_error_messages(validation_errors):
 @campground_routes.route('/')
 @login_required
 def all_campgrounds():
-    all_campgrounds = Campground.query.all()
-    return {'campgrounds': [campground.to_dict() for campground in all_campgrounds]}
+    campgrounds = Campground.query.all()
+    campgrounds_parsed = {}
+    for campground in campgrounds:
+        campgrounds_parsed[campground.id] = campground.to_dict()
+    return campgrounds_parsed
 
 @campground_routes.route('/<int:id>')
 @login_required
 def single_camground(id):
     single_camground = Campground.query.get(id)
-    return {'campground': single_camground.to_dict()}
-
+    return single_camground.to_dict()
+    
 @campground_routes.route('/host', methods=['POST'])
 @login_required
 def create_campground():
@@ -41,8 +44,6 @@ def create_campground():
             capacity = form.data['capacity'],
             host_id = current_user.id,
             price = form.data['price'],
-            lat = form.data['lat'],
-            lng = form.data['lng'],
             min_nights = form.data['min_nights'],
             max_nights = form.data['max_nights'],
             checkin_time = form.data['checkin_time'],
@@ -65,7 +66,6 @@ def create_campground():
         return new_campground.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-
 @campground_routes.route('/host/<int:id>', methods=['PUT'])
 @login_required
 def update_campground(id):
@@ -79,8 +79,6 @@ def update_campground(id):
         edit_campground.capacity = form.data['capacity']
         edit_campground.host_id = current_user.id
         edit_campground.price = form.data['price']
-        edit_campground.lat = form.data['lat']
-        edit_campground.lng = form.data['lng']
         edit_campground.min_nights = form.data['min_nights']
         edit_campground.max_nights = form.data['max_nights']
         edit_campground.checkin_time = form.data['checkin_time']

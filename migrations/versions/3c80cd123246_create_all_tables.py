@@ -58,8 +58,6 @@ def upgrade():
     sa.Column('capacity', sa.Integer(), nullable=False),
     sa.Column('host_id', sa.Integer(), nullable=False),
     sa.Column('price', sa.Float(), nullable=False),
-    sa.Column('lat', sa.Float(), nullable=False),
-    sa.Column('lng', sa.Float(), nullable=False),
     sa.Column('min_nights', sa.Integer(), nullable=False),
     sa.Column('max_nights', sa.Integer(), nullable=False),
     sa.Column('checkin_time', sa.String(), nullable=False),

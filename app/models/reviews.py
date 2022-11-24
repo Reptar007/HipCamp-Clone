@@ -12,6 +12,8 @@ class Review(db.Model):
     rating = db.Column(db.Float, nullable=False)
     body = db.Column(db.String, nullable=False)
 
+    campground = db.relationship("Campground", back_populates='review')
+
     def to_dict(self):
         return {
             'id' : self.id,
