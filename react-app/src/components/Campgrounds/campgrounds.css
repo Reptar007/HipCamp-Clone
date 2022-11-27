@@ -1,0 +1,123 @@
+.campgrounds_container {
+    width: 1232px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5rem;
+    color: rgb(40, 64, 11);
+}
+
+.campgrounds_container>h2 {
+    align-self: flex-start;
+    margin-bottom: 1rem;
+}
+
+.campgrounds_container>h1 {
+    font-size: 62px;
+    margin-bottom: 1rem;
+}
+
+.campgrounds_container> p {
+    font-weight: bold;
+    text-align: center;
+    font-size: 28px;
+    padding-bottom: 4rem;
+}
+
+.landing_page_images {
+    width: 1232px;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.slide {
+    width: 95.5%;
+    height: 80%;
+    position: absolute;
+    top: 10;
+    transition-duration: 2s ease;
+}
+
+.slide.active {
+    opacity: 1;
+    transition-duration: 2s;
+    scale: 1.05;
+}
+
+.slide>img {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+   
+}
+
+.campgrounds_searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    height: 120px;
+    width: 95%;
+    border-radius: 60px;
+    background: rgb(243, 242, 239);
+    position: absolute;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1), -1px -1px 2px rgba(0, 0, 0, 0.1);
+    top: 0;
+}
+
+.campsites {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    position: relative;
+    width: 100%;
+}
+
+.camp_images {
+    object-fit: cover;
+    border-radius: 20px;
+    height: 548px;
+    width: 100%;
+}
+
+
+.camp_banner {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    height: 25%;
+    width: 100%;
+    background: #F8E7AE;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    color: black;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.campsite_container {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.2s ease;
+}
+
+.campsite_container:hover {
+    cursor: pointer;
+    top: -10px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}

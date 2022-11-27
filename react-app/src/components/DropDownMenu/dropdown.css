@@ -1,0 +1,31 @@
+.dropdown_menu {
+    position: absolute;
+    top: 70px;
+    right: 0px;
+    background: white;
+    width: 12em;
+    height: 16em;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.06), -1px -1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.dropdown_menu h2 {
+    margin-bottom: 5px;
+}
+
+.dropdown_menu p{
+    cursor: pointer;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 7px 0;
+    transition: all 0.2s ease-out;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.dropdown_menu p:hover {
+    padding-left: 10px;
+    font-weight: bold;
+    color: rgb(40, 64, 11);
+}
+

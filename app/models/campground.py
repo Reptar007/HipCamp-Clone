@@ -1,6 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.schema import Table
-from .reviews import Review
+from .user import User
 
 campground_amenities = Table(
     "campground_amenities",

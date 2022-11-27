@@ -1,36 +1,38 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import LoginFormModal from './LoginModal';
+import SignUpFormModal from './SignUpModal';
 import LogoutButton from './auth/LogoutButton';
+import DropDownMenu from './DropDownMenu';
+import { useSelector } from 'react-redux';
+import './navbar.css'
 
 const NavBar = () => {
+
+  const sessionUser = useSelector((state) => state.session.user)
+
   return (
-    <nav>
-      <ul>
-        <li>
+    <nav className='nav'>
+      <div className='left_nav'>
           <NavLink to='/' exact={true} activeClassName='active'>
-            Home
+            <img src='https://i.imgur.com/hraaBSg.png' alt='home logo' />
           </NavLink>
-        </li>
-        <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li>
-        <li>
+      </div>
+      {!sessionUser && (
+        <>
+          <div className='right_nav'>
+            <LoginFormModal />
+            <SignUpFormModal />
+          </div>
+        </>
+        )}
+        {sessionUser && (
+        <div className='right_nav'>
           <LogoutButton />
-        </li>
-      </ul>
+          <DropDownMenu user={sessionUser}/>
+        </div>
+        )}
     </nav>
   );
 }

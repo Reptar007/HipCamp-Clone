@@ -1,7 +1,8 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import db,Campground, Activity, Amenity, Review, CampgroundImage
+from app.models import db,Campground, Activity, Amenity, CampgroundImage, User
 from app.forms.campgrounds_form import CampgroundForm
+from app.forms.image_form import ImageForm
 
 campground_routes = Blueprint('campgrounds', __name__)
 
@@ -17,7 +18,6 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 @campground_routes.route('/')
-@login_required
 def all_campgrounds():
     campgrounds = Campground.query.all()
     campgrounds_parsed = {}
@@ -26,10 +26,11 @@ def all_campgrounds():
     return campgrounds_parsed
 
 @campground_routes.route('/<int:id>')
-@login_required
 def single_camground(id):
     single_camground = Campground.query.get(id)
-    return single_camground.to_dict()
+    host = User.query.get(single_camground.to_dict()['host'])
+
+    return {'camp': single_camground.to_dict(), 'host': host.to_dict()}
     
 @campground_routes.route('/host', methods=['POST'])
 @login_required
@@ -51,6 +52,14 @@ def create_campground():
             description = form.data['description']
         )
         db.session.add(new_campground)
+
+        images = request.json['images']
+        for image in images:
+            new_image = CampgroundImage(
+                camground_id = new_campground.id,
+                image_url = image.url
+            )
+            db.session.add(new_image)
 
         activities = request.json['activities']
         for activityId in activities:
