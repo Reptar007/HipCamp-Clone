@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react'
 import {useSelector, useDispatch } from 'react-redux'
 import {useParams} from 'react-router-dom'
 import {getSingleCampgroundThunk} from '../../store/campgrounds'
+import Essentials from './essentials'
+import Amenities from './amenities'
+import Activities from './activities'
 import './SingleCamp.css'
 
 function SingleCampsite() {
@@ -14,6 +17,7 @@ function SingleCampsite() {
     const camp = useSelector(state => state?.campgrounds?.singleCamp?.camp)
     const host = useSelector(state => state.campgrounds.singleCamp.host)
     const length = camp?.Images?.length
+    
 
     const nextSlide = () => {
         setCurrent(current === length - 1 ? 0 : current + 1)
@@ -27,8 +31,6 @@ function SingleCampsite() {
         dispatch(getSingleCampgroundThunk(+campgroundId))
     },[])    
     
-   
-
 
     return (
       <div className="singleCamp_container">
@@ -74,6 +76,57 @@ function SingleCampsite() {
               </div>
               <div className="camp_bio">{camp?.description}</div>
             </div>
+            <div className="camp_boxes">
+              <div className="area">
+                <h2>Campsite Area</h2>
+                <div className="area_icons">
+                  <div className="area_icons_tents">
+                    <i class="fa-light fa-tents"></i>
+                    <h4> Tents </h4>
+                  </div>
+                  <div className="area_icons_sites">
+                    <i class="fa-light fa-map-pin"></i>
+                    <h4> sites</h4>
+                  </div>
+                  <div className="area_icons_guest">
+                    <i class="fa-thin fa-people"></i>
+                    <h4> guests per site</h4>
+                  </div>
+                  <div className="area_icons_parking">
+                    <i class="fa-solid fa-car"></i>
+                    <h4> Parking </h4>
+                  </div>
+                </div>
+              </div>
+              <Essentials camp={camp} />
+              <Amenities camp={camp} />
+            </div>
+            <div className="details">
+              <div className="detail_name">
+                <h3>Details:</h3>
+              </div>
+              <div className="detail_check">
+                <div className="checkin">
+                  <h4>Check in:</h4>
+                  <h4> After {camp?.checkin_time}</h4>
+                </div>
+                <div className="checkin">
+                  <h4>Check out:</h4>
+                  <h4>Before {camp?.checkout_time}</h4>
+                </div>
+              </div>
+              <div className="detail_booking">
+                <div className="checkin">
+                  <h4>Minimum Nights:</h4>
+                  <h4>{camp?.min_nights}</h4>
+                </div>
+                <div className="checkin">
+                  <h4>Maximum Nights:</h4>
+                  <h4>{camp?.max_nights}</h4>
+                </div>
+              </div>
+            </div>
+            <Activities camp={camp} />
           </div>
           <div className="bookings"></div>
         </div>

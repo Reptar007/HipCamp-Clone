@@ -60,7 +60,7 @@ const LoginForm = () => {
         <button
           type="submit"
           onClick={() => {
-            setEmail("Demo@aa.io");
+            setEmail("demo@aa.io");
             setPassword("password");
           }}
         >

@@ -6,7 +6,7 @@
     height: 70px;
     position: sticky;
     top: 0;
-    z-index: 3;
+    z-index: 12;
 }
 
 .left_nav img {

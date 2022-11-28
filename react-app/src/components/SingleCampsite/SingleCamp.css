@@ -1,17 +1,17 @@
 .singleCamp_container {
     width: 1232px;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 5rem;
-    color: rgb(40, 64, 11);
+    padding-top: 2rem;
+    color: black
 }
 
 .slider {
     position: relative;
     height: 600px;
-    width: 100%;
+    width: 98%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -115,6 +115,304 @@
 
 .hosted_by {
     font-size: 1.2rem;
+}
+
+.camp_boxes{
+    height: 300px;
+    width: 100%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: .7rem;
+    color: rgba(0, 0, 0, 0.5);
+    border-bottom:  1px solid rgba(0, 0, 0, 0.2);
+}
+
+.camp_boxes h2 {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.area,
+.essentials,
+.amenities {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    padding: 0.7rem;
+}
+
+.area_icons {
+    padding: 0.7rem;
+    font-size: 1.08rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.area_icons_tents {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.8rem;
+}
+
+.area_icons_tents> i {
+    flex: 20;
+    display: flex;
+    justify-content: center;
+
+}
+
+.area_icons_tents> h4 {
+    flex: 80;
+    margin-left: 10px;
+}
+
+.area_icons_sites {
+    display: flex;
+    align-items: center;
+    height: 1.8rem;
+}
+
+.area_icons_sites>i {
+    flex: 20;
+    display: flex;
+    justify-content: center;
+}
+
+.area_icons_sites>h4 {
+    flex: 80;
+    margin-left: 10px;
+}
+
+.area_icons_guest {
+    display: flex;
+    align-items: center;
+    height: 1.8rem;
+}
+
+.area_icons_guest>i {
+    flex: 20;
+    display: flex;
+    justify-content: center;
+}
+
+.area_icons_guest>h4 {
+    flex: 80;
+    margin-left: 10px;
+}
+
+.area_icons_parking {
+    display: flex;
+    align-items: center;
+    height: 1.8rem;
+}
+
+.area_icons_parking>i {
+    flex: 20;
+    display: flex;
+    justify-content: center;
+}
+
+.area_icons_parking>h4 {
+    flex: 80;
+    margin-left: 10px;
+}
+
+.essentials_icons {
+    padding: 0.7rem;
+    font-size: 1.08rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+
+.essentials_icons_campfire {
+    display: flex;
+    align-items: center;
+    height: 1.8rem;
+}
+
+.essentials_icons_campfire>i {
+    flex: 20;
+    display: flex;
+    justify-content: center;
+}
+
+.essentials_icons_campfire>h4 {
+    flex: 80;
+    margin-left: 10px;
+}
+
+.essentials_icons_campfireNone {
+    display: flex;
+    align-items: center;
+    height: 1.8rem;
+}
+
+.essentials_icons_campfireNone>img {
+    flex: 20;
+    height: 90%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    object-fit: cover;
+}
+
+.essentials_icons_campfireNone>h4 {
+    flex: 80;
+    margin-left: 10px;
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.essentials_icons_toliets {
+    display: flex;
+    align-items: center;
+    height: 1.8rem;
+}
+
+.essentials_icons_toliets>i {
+    flex: 20;
+    display: flex;
+    justify-content: center;
+}
+
+.essentials_icons_toliets>h4 {
+    flex: 80;
+    margin-left: 10px;
+}
+
+.none {
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.testing i {
+    position: absolute;
+    left: 20px;
+    font-size: 100px;
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.amenities_icons {
+    padding: 0.7rem;
+    font-size: 1.08rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+
+.amenity_icons_single {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.8rem;
+}
+
+.amenity_icons_single>i {
+    flex: 20;
+    display: flex;
+    justify-content: center;
+}
+
+.amenity_icons_single>h4 {
+    flex: 80;
+    margin-left: 10px;
+}
+
+.amenity_icons_singleNone {
+    display: flex;
+    align-items: center;
+    height: 1.8rem;
+}
+
+.amenity_icons_singleNone>img {
+    flex: 20;
+    height: 90%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    object-fit: cover;
+}
+
+.amenity_icons_singleNone>h4 {
+    flex: 80;
+    margin-left: 10px;
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.details {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    height: 120px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+}
+
+.detail_name,
+.detail_check,
+.detail_booking {
+   
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.detail_name {
+    font-weight: bold;
+    border-right: 1px solid rgba(0, 0, 0, 0.5) ;
+}
+
+.detail_check {
+    border-right: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.checkin {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    padding-left: 20px;
+}
+
+.checkin h4:nth-child(2) {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.activities_container {
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.activities_container h4 {
+    margin-top: 5px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.activity_boxes{
+    height: 19rem;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.activity_box {
+    margin: 20px 20px 14px 20px;
+    text-align: center;
+    height: fit-content;
+    font-size: 10px;
+}
+
+.act_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 50px;
+    margin-bottom: 6px;
 }
 
 .bookings {
