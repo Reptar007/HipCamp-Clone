@@ -34,17 +34,14 @@ function DropDownMenu({ user }) {
 
      return (
        <>
-         <img
-           onMouseEnter={openMenu}
-           src={logo}
-           alt="logo"
-         />
+         <img onMouseEnter={openMenu} src={logo} alt="logo" />
          {showMenu && (
            <div onMouseLeave={closeMenu} className="dropdown_menu">
-             <h2>Hello! {user?.username}</h2>
-             <p>Profile</p>
+             <p>
+               <i class="fa-thin fa-address-card"></i>Profile
+             </p>
              <p className="logout" onClick={onLogout}>
-               Log out
+               <i class="fa-thin fa-right-from-bracket"></i>Log out
              </p>
            </div>
          )}

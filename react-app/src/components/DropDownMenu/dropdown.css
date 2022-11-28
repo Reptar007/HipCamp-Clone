@@ -4,23 +4,24 @@
     right: 0px;
     background: white;
     width: 12em;
-    height: 16em;
+    height: fit-content;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.06), -1px -1px 2px rgba(0, 0, 0, 0.06);
 }
 
-.dropdown_menu h2 {
-    margin-bottom: 5px;
-}
 
 .dropdown_menu p{
     cursor: pointer;
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     padding: 7px 0;
     transition: all 0.2s ease-out;
-    font-size: 15px;
+    font-size: 20px;
     text-transform: uppercase;
+}
+
+.dropdown_menu p i {
+    padding-right: 5px;
 }
 
 .dropdown_menu p:hover {
