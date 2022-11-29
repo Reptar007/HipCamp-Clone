@@ -1,0 +1,69 @@
+.profile_container {
+    height: 94vh;
+}
+
+.profile_wrapper {
+    width: 1232px;
+    height: 100%;
+    padding: 5rem;
+    display: flex;
+}
+
+.profile_left {
+    flex: 30;
+}
+
+.profile_right {
+    flex: 70;
+    padding: 0 2rem;
+}
+
+.profile_user {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    height: 15rem;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.profile_image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2);
+    color: black;
+    margin-right: 20px;
+}
+
+.profile_email {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 8rem;
+}
+
+.profile_camp {
+    height: 10rem;
+    padding: 1rem;
+    display: flex;
+    margin: 1rem 0;
+}
+
+.profile_img {
+    height: 100%;
+    width: 10rem;
+    margin-right: 1rem;
+}
+
+.profile_img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}

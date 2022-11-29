@@ -30,3 +30,10 @@
     color: rgb(40, 64, 11);
 }
 
+.dropdown_menu a,
+.dropdown_menu a:visited,
+.dropdown_menu a:link,
+.dropdown_menu a:active {
+    text-decoration: none;
+    color: black;
+}

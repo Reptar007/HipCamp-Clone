@@ -52,15 +52,17 @@ def create_campground():
             description = form.data['description']
         )
         db.session.add(new_campground)
+        db.session.commit()
 
         images = request.json['images']
         for image in images:
             new_image = CampgroundImage(
-                camground_id = new_campground.id,
-                image_url = image.url
+                campground_id = new_campground.id,
+                image_url = image
             )
             db.session.add(new_image)
-
+        db.session.commit()
+  
         activities = request.json['activities']
         for activityId in activities:
             activity = Activity.query.get(activityId) 

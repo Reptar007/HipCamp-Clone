@@ -62,10 +62,10 @@ function AllCampgrounds() {
     
                             }}
                             className='campsite_container'
-                            key={camp.id}
+                            key={camp?.id}
                             >
-                            <img className='camp_images' src={camp.Images[0].image_url} alt='camp-imgae' />
-                            <div className='camp_banner'>{camp.name}</div>
+                            <img className='camp_images' src={camp?.Images[0]?.image_url} alt='camp-imgae' />
+                            <div className='camp_banner'>{camp?.name}</div>
                         </div>
                     </NavLink>
                     ))}

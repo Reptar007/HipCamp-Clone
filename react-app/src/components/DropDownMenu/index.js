@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import logo from '../assets/images/logo.svg'
+import { NavLink } from "react-router-dom";
 import { logout } from "../../store/session";
 import { useDispatch } from "react-redux";
 import './dropdown.css'
@@ -37,9 +38,9 @@ function DropDownMenu({ user }) {
          <img onMouseEnter={openMenu} src={logo} alt="logo" />
          {showMenu && (
            <div onMouseLeave={closeMenu} className="dropdown_menu">
-             <p>
-               <i class="fa-thin fa-address-card"></i>Profile
-             </p>
+            <NavLink to='/profile'>
+              <p><i class="fa-thin fa-address-card"></i>Profile</p>
+            </NavLink>
              <p className="logout" onClick={onLogout}>
                <i class="fa-thin fa-right-from-bracket"></i>Log out
              </p>
