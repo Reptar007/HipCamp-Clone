@@ -31,8 +31,8 @@ class Campground(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     location = db.Column(db.String, nullable=False)
-    acres = db.Column(db.Integer, nullable=False)
-    capacity = db.Column(db.Integer, nullable=False)
+    sites = db.Column(db.Integer, nullable=False)
+    guests = db.Column(db.Integer, nullable=False)
     host_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     price = db.Column(db.Float, nullable=False)
     min_nights = db.Column(db.Integer, nullable=False)
@@ -70,8 +70,8 @@ class Campground(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'acres': self.acres,
-            'capacity': self.capacity,
+            'sites': self.sites,
+            'guests': self.guests,
             'host': self.host_id,
             'name': self.name,
             'location': self.location,

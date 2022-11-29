@@ -2,8 +2,8 @@ from app.models import db, Campground,CampgroundImage, environment, Activity, Am
 
 def seed_campgrounds():
     Valle = Campground (
-        acres = 160,
-        capacity = 100,
+        sites = 60,
+        guests = 5,
         host_id = 1,
         name = 'Under Canvas Grand Canyon',
         location = '979 Airpark Ln, Grand Canyon Junction, AZ 86046',
@@ -16,8 +16,8 @@ def seed_campgrounds():
     )
 
     OakCreek = Campground (
-        acres = 100,
-        capacity = 56,
+        sites = 60,
+        guests = 5,
         host_id = 2,
         name = 'Pine Flat Campground',
         location = '12248 N. SR 89A, Sedona, Arizona 86336',

@@ -6,8 +6,8 @@ from app.models import Activity, Amenity
 class CampgroundForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
     location = StringField('location', validators=[DataRequired()])
-    acres = IntegerField('acres', validators=[DataRequired()])
-    capacity = IntegerField('capacity', validators=[DataRequired()])
+    sites = IntegerField('acres', validators=[DataRequired()])
+    guests = IntegerField('capacity', validators=[DataRequired()])
     host_id = IntegerField('host_id')
     price = FloatField('price', validators=[DataRequired()])
     min_nights = IntegerField('min_nights', validators=[DataRequired()])
