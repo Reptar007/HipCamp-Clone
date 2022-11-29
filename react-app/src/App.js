@@ -10,6 +10,7 @@ import User from './components/User';
 import SingleCampsite from './components/SingleCampsite';
 import AllCampgrounds from './components/Campgrounds';
 import CreateCampground from './components/CreateCampground';
+import Profile from './components/Profile';
 import { authenticate } from './store/session';
 
 function App() {
@@ -51,6 +52,9 @@ function App() {
         </Route>
         <Route path='/host'>
           <CreateCampground />
+        </Route>
+        <Route path='/profile'>
+          <Profile />
         </Route>
       </Switch>
     </BrowserRouter>

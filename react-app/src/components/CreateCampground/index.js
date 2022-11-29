@@ -7,29 +7,29 @@ import ActivityAmenityForm from './actamenform';
 import CampgroundForm from './campgroundform';
 import ImagesForm from './images';
 import Review from './review';
-import {createCampsiteThunk} from '../../store/campgrounds'
+import {createCampsiteThunk, updateCampsiteThunk} from '../../store/campgrounds'
 
-function CreateCampground() {
+function CreateCampground({ camp, update, setShowModal }) {
     const dispatch = useDispatch()
     const history = useHistory()
     const [page, setPage] = useState(1)
     const [state, setState] = useState({
-      name: "",
-      location: "",
-      acres: "",
-      capacity: "",
-      price: 0,
-      min_nights: 0,
-      max_nights: 0,
-      checkout_time: "",
-      checkin_time: "",
-      description: "",
-      activities: [],
-      amenities: [],
-      img1: '',
-      img2: '',
-      img3: '',
-      img4: ''
+      name: camp?.name || " ",
+      location: camp?.location || "",
+      sites: camp?.sites || "",
+      guests: camp?.guests || "",
+      price: camp?.price || 0,
+      min_nights: camp?.min_nights || 0,
+      max_nights: camp?.max_nights || 0,
+      checkout_time: camp?.checkout_time || "00:00",
+      checkin_time: camp?.checkin_time || "00:00",
+      description: camp?.description || "",
+      activities: camp?.Activites.map(act => act.id) || [],
+      amenities: camp?.Amenities.map(am => am.id) || [],
+      img1: camp?.Images[0].image_url || "",
+      img2: camp?.Images[1].image_url || "",
+      img3: camp?.Images[2].image_url || "",
+      img4: camp?.Images[3].image_url || "",
     });
 
     const next = () => setPage(page + 1)
@@ -56,6 +56,7 @@ function CreateCampground() {
                 back={back}
                 state={state}
                 change={handleChange}
+                setState={setState}
               />
             );
             break
@@ -73,7 +74,7 @@ function CreateCampground() {
             content = <ImagesForm next={next} back={back} state={state} change={handleChange} />
             break
         case 5:
-            content = <Review back={back} state={state}/>
+            content = <Review back={back} state={state} update={update}/>
             break
         default:
             return null
@@ -85,8 +86,8 @@ function CreateCampground() {
         const payload = {
           name: state.name,
           location: state.location,
-          acres: state.acres,
-          capacity: state.capacity,
+          sites: state.sites,
+          guests: state.guests,
           price: state.price,
           min_nights: state.min_nights,
           max_nights: state.max_nights,
@@ -98,17 +99,23 @@ function CreateCampground() {
           images: [state.img1, state.img2, state.img3, state.img4]
         }
 
-        let newcampsite = await dispatch(createCampsiteThunk(payload))
+        if(update) {
+          let updatedcampsite = await dispatch(updateCampsiteThunk(camp.id, payload))
 
-        if(newcampsite) {
-          history.push('/')
+          if(updatedcampsite) setShowModal(false)
+        } else {
+          let newcampsite = await dispatch(createCampsiteThunk(payload))
+  
+          if(newcampsite) {
+            history.push('/')
+          }
         }
 
         setState({
           name: "",
           location: "",
-          acres: "",
-          capacity: "",
+          sites: "",
+          guests: "",
           price: 0,
           min_nights: 0,
           max_nights: 0,

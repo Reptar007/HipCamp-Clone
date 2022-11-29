@@ -1,10 +1,9 @@
 .createform_container {
-    height: 94vh;
-   
+    height: 94vh; 
 }
 
 .createform {
-    height: 900px;
+    height: fit-content;
     width: 616px;
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: 5px 2px 3px 2px rgba(0, 0, 0, 0.5);
@@ -14,8 +13,84 @@
     flex-direction: column;
     align-items: center;
     padding: 25px 50px;
-    background: white;
+    background: #E1D9C9;
     text-align: center;
+}
+
+.createform>form{
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 3rem;
+}
+
+.createform>form h3,
+.createform>form h5,
+.createform>form h2,
+.createform>form p {
+    align-self: flex-start;
+    text-align: left;
+    padding-bottom: 0.5rem;
+}
+
+.createform>form p {
+    padding-left: 1rem;
+}
+
+.createform>form input {
+    width: 100%;
+    outline: none;
+    border: 1px solid rgba(40, 64, 11, 0.5);
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    background: white;
+    font-size: 1rem;
+}
+
+.createform>form textarea {
+    width: 100%;
+    outline: none;
+    border: 1px solid rgba(40, 64, 11, 0.5);
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    background-color: white;
+    font-size: 1rem;
+    resize: none;
+    height: 10em;
+}
+
+.createform>form input:focus {
+    border: 2px solid rgb(40, 64, 11)
+}
+
+.createform>form textarea:focus {
+    border: 2px solid rgb(40, 64, 11)
+}
+
+.createform>form button {
+    color: black;
+    background: #ECA72C;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.time {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.time select {
+    width: 5rem;
+    height: 2.5rem;
+    text-align: center;
+    font-size: 1rem;
 }
 
 .title_form {
@@ -24,14 +99,39 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.act_container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 1rem;
+}
+
 .testingblock{
-    height: 30px;
-    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.75rem;
+    width: 7.5rem;
     border: 1px solid black;
-    font-size: 10px;
+    font-size: 16px;
     border-radius: 20px;
+    cursor: pointer;
+    border: 1px solid rgb(40, 64, 11);
+    color: rgb(40, 64, 11);
+    background: none;
 }
 
 .checked{
-    background: red;
+    color: white;
+    background: #0E3806;
+}
+
+.review {
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+    max-height: fit-content;
 }
