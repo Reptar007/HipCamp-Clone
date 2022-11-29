@@ -20,7 +20,7 @@
     gap: 1rem;
 }
 
-.right_nav>button {
+.right_nav button {
     color:  white;
     background: #00C585;
     padding: 10px 20px;
@@ -28,7 +28,7 @@
     border-radius: 20px;
 }
 
-.right_nav>button:hover {
+.right_nav button:hover {
     cursor: pointer;
     border: 1px solid #00C585;
     color: #00C585;

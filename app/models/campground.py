@@ -60,6 +60,8 @@ class Campground(db.Model):
     def avg(self):
         reviews = self.review
         sum_rating = 0
+        if len(reviews) == 0:
+            return sum_rating
         for review in reviews:
             rating = review.to_dict()
             sum_rating += rating['rating']

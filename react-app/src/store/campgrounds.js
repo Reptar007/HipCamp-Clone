@@ -1,6 +1,7 @@
 //constants
 const All_CAMPGROUNDS = 'campgrounds/ALL'
 const SINGLE_CAMPSITE = 'campgrounds/SINGLE'
+const CREATE_CAMP = 'campgrounds/CREATE'
 
 /* ----- ACTIONS CREATOR ----- */
 
@@ -14,6 +15,13 @@ const get_all = campgrounds => {
 const get_one = campground => {
   return {
     type: SINGLE_CAMPSITE,
+    campground
+  }
+}
+
+const post = campground => {
+  return {
+    type: CREATE_CAMP,
     campground
   }
 }
@@ -40,6 +48,21 @@ export const getSingleCampgroundThunk = (id) => async dispatch => {
   }
 }
 
+export const createCampsiteThunk = (payload) => async dispatch => {
+  const res = await fetch("/api/campgrounds/host", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if(res.ok) {
+    const campground = await res.json()
+    console.log('----------------------',campground)
+    dispatch(post(campground))
+    return campground
+  }
+}
+
 /* ----- Reducer ----- */
 
 const initialState = { allCampgrounds: {}, singleCamp: {}};
@@ -52,6 +75,9 @@ const campgroundReducer = (state = initialState, action) => {
       return campgroundStateObj;
     case SINGLE_CAMPSITE:
       campgroundStateObj.singleCamp = action.campground
+      return campgroundStateObj
+    case CREATE_CAMP:
+      campgroundStateObj.allCampgrounds[action.campground.id] = action.campground
       return campgroundStateObj
     default:
       return state;

@@ -51,8 +51,8 @@ function Amenities({ camp }) {
     amenities?.some((amenity) => amenity.id === 7)
       ? (showerContent = (
           <div className="amenity_icons_single">
-            <i class="fa-thin fa-trash"></i>
-            <h4> Bins </h4>
+            <i class="fa-thin fa-bath"></i>
+            <h4> Showers </h4>
           </div>
         ))
       : (showerContent = (

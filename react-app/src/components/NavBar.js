@@ -3,7 +3,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LoginFormModal from './LoginModal';
 import SignUpFormModal from './SignUpModal';
-import LogoutButton from './auth/LogoutButton';
 import DropDownMenu from './DropDownMenu';
 import { useSelector } from 'react-redux';
 import './navbar.css'
@@ -29,7 +28,9 @@ const NavBar = () => {
         )}
         {sessionUser && (
         <div className='right_nav'>
-          <LogoutButton />
+          <NavLink to='/host'>
+            <button> HOST </button>
+          </NavLink>
           <DropDownMenu user={sessionUser}/>
         </div>
         )}
