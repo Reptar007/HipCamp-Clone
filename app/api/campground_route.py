@@ -41,8 +41,8 @@ def create_campground():
         new_campground = Campground (
             name = form.data['name'],
             location = form.data['location'],
-            acres = form.data['acres'],
-            capacity = form.data['capacity'],
+            sites = form.data['sites'],
+            guests = form.data['guests'],
             host_id = current_user.id,
             price = form.data['price'],
             min_nights = form.data['min_nights'],
@@ -86,8 +86,8 @@ def update_campground(id):
     if form.validate_on_submit():
         edit_campground.name = form.data['name']
         edit_campground.location = form.data['location']
-        edit_campground.acres = form.data['acres']
-        edit_campground.capacity = form.data['capacity']
+        edit_campground.sites = form.data['sites']
+        edit_campground.guests = form.data['guests']
         edit_campground.host_id = current_user.id
         edit_campground.price = form.data['price']
         edit_campground.min_nights = form.data['min_nights']
