@@ -32,7 +32,10 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <form 
+    onSubmit={onLogin}
+    className='background_modal'
+    >
       <h1>
         Welcome back!
         <img src={logo} alt="logo" />

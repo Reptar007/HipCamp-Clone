@@ -43,7 +43,9 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <form 
+    className="background_modal"
+    onSubmit={onSignUp}>
         <h1>Join Contempo</h1>
         <input
           type="text"

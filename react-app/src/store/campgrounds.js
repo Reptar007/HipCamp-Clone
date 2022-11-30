@@ -31,7 +31,7 @@ const post = campground => {
 const deleteCamp = id => {
   return {
     type: DELETE_CAMP,
-   id
+    id
   }
 }
 

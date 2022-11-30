@@ -2,10 +2,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
 import campgroundReducer from './campgrounds';
+import reviewReducer from './reviews';
 
 const rootReducer = combineReducers({
   session,
-  campgrounds: campgroundReducer
+  campgrounds: campgroundReducer,
+  reviews: reviewReducer
 });
 
 

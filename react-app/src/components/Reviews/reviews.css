@@ -1,0 +1,127 @@
+.reviews_container {
+    height: 40rem;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2) ;
+}
+
+.reviews_container>form {
+    display: flex;
+}
+
+.reviews_container>form p {
+    align-self: flex-end;
+    font-size: 12px;
+    margin-bottom: 1rem;
+}
+
+.reviews_container>form textarea {
+    resize: none;
+    margin: 1rem;
+    width: 75%;
+    height: 5rem;
+    outline: none;
+    padding: 8px;
+}
+
+.update_textarea{
+    resize: none;
+    margin: 1rem;
+    height: 8rem;
+    width: 100%;
+    outline: none;
+    padding: 8px;
+}
+
+.reviews_container>form button {
+    color: white;
+    background: #00C585;
+    height: 2rem;
+    padding: 10px 20px;
+    border: none;
+    margin-bottom: 1rem;
+}
+
+.reviews_container>form button:hover {
+    cursor: pointer;
+    border: 1px solid #00C585;
+    color: #00C585;
+    background: none;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.ratings_reviews {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stars-wrapper {
+    margin-top: 1rem;
+}
+
+.reviews_wrapper {
+    padding-top: 10px;
+    height: 30rem;
+}
+
+.reviews_body {
+    height: 95%;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow-y: scroll;
+    gap: 2rem;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.reviews_body::-webkit-scrollbar {
+    display: none;
+}
+
+.single_review {
+    border: 1px solid black;
+    height: 5rem;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    display: flex;
+    overflow-wrap: break-word;
+    padding: 0.5rem;
+    position: relative;
+}
+
+.single_review_author {
+    flex: 30;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.single_review_body {
+    color: rgba(0, 0, 0, 0.5);
+    width: 14rem;
+    font-size: 12px;
+}
+
+.review_buttons {
+    position: absolute;
+    right: 0;
+    top: -16px;
+    display: flex;
+}
+
+.review_buttons button{
+    color: white;
+    background: #00C585;
+    padding: 5px 10px;
+    border: none;
+    margin-right: 2px;
+    cursor: pointer;
+}
+
+.review_buttons button:hover {
+    transform: scale(1.04);
+}
