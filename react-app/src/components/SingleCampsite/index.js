@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import {useSelector, useDispatch } from 'react-redux'
 import {useParams} from 'react-router-dom'
-import {getSingleCampgroundThunk} from '../../store/campgrounds'
+import { getSingleCampgroundThunk } from '../../store/campgrounds'
+import { getReviewsByCampgroundThunk } from '../../store/reviews'
+import Reviews from '../Reviews'
 import Essentials from './essentials'
 import Amenities from './amenities'
 import Activities from './activities'
@@ -29,6 +31,7 @@ function SingleCampsite() {
 
     useEffect(() => {
         dispatch(getSingleCampgroundThunk(+campgroundId))
+        dispatch(getReviewsByCampgroundThunk(+campgroundId));
     },[])    
     
 
@@ -127,6 +130,7 @@ function SingleCampsite() {
               </div>
             </div>
             <Activities camp={camp} />
+            <Reviews />
           </div>
           <div className="bookings"></div>
         </div>

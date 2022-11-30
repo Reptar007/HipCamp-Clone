@@ -1,23 +1,23 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
-import CreateCampground  from '../CreateCampground/index'
+import ReviewForm from "./ReviewFrom";
 
-function UpdateCampsite({ camp }) {
+
+function ReviewFormModal({ review, camp }) {
   const [showModal, setShowModal] = useState(false);
-  const [update, setUpdate] = useState(true)
+
   return (
-    <div
-    >
+    <>
       <button onClick={() => setShowModal(true)}>
         <i class="fa-solid fa-pen"></i>
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <CreateCampground camp={camp} update={update} setShowModal={setShowModal}/>
+          <ReviewForm setShowModal={setShowModal} review={review} camp={camp}/>
         </Modal>
       )}
-    </div>
+    </>
   );
 }
 
-export default UpdateCampsite;
+export default ReviewFormModal;

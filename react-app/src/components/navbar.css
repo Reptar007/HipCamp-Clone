@@ -6,7 +6,7 @@
     height: 70px;
     position: sticky;
     top: 0;
-    z-index: 12;
+    z-index: 10;
 }
 
 .left_nav img {
@@ -45,3 +45,15 @@
     cursor: pointer;
 }
 
+.background_modal {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    padding: 2rem 1rem;
+    margin: 50px auto;
+    text-align: center;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}

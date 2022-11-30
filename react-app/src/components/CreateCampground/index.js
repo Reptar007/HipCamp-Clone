@@ -133,9 +133,9 @@ function CreateCampground({ camp, update, setShowModal }) {
     }
 
     return (
-      <div className="createform_container">
+      <div className={update ? "" : "createform_container"}>
         <div className="createform">
-          <h1 className='title_form'>
+          <h1 className="title_form">
             Create an Adventure <br /> of a Lifetime
           </h1>
           <form onSubmit={handleSumbit}>{content}</form>

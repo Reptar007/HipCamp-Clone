@@ -18,14 +18,27 @@
     padding: 0 2rem;
 }
 
+.profile_right h3 {
+    margin-bottom: 1rem;
+}   
+
 .profile_user {
     border: 1px solid rgba(0, 0, 0, 0.2);
-    height: 15rem;
+    height: 10rem;
     padding: 20px;
     display: flex;
-    justify-content: center;
-    align-items: center;
     margin-bottom: 2rem;
+}
+
+.user_title {
+    color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+
+}
+
+.user_title h3 {
+    color: black;
+    margin-top: 0.5rem;
 }
 
 .profile_image {
@@ -44,9 +57,22 @@
 .profile_email {
     border: 1px solid rgba(0, 0, 0, 0.2);
     display: flex;
+    flex-direction: column;
+    height: 6rem;
+    padding: 1rem;
+}
+
+.email_title,
+.email {
+    display: flex;
+    gap: 0.5rem;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.email {
+    margin-left: 1rem;
     align-items: center;
-    justify-content: center;
-    height: 8rem;
+    margin-top: 1rem;
 }
 
 .profile_camp {
@@ -54,6 +80,44 @@
     padding: 1rem;
     display: flex;
     margin: 1rem 0;
+    border: 1px solid black;
+}
+
+.profile_camp button {
+    color: white;
+    background: #00C585;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+}
+
+.profile_camp button,
+.profile_camp h5 {
+    margin-left: 1rem;
+}
+
+.profile_camp h5 {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.profile_camp button:hover {
+    cursor: pointer;
+    border: 1px solid #00C585;
+    color: #00C585;
+    background: none;
+}
+
+.camp_container {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    height: 55rem;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.camp_container::-webkit-scrollbar {
+    display: none;
 }
 
 .profile_img {
@@ -66,4 +130,14 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+
+.camp_buttons {
+    display: flex;
+}
+
+.camp_desc{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
