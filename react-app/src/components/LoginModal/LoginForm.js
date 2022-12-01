@@ -56,7 +56,7 @@ const LoginForm = () => {
         />
         <div>
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <div className='errors' key={ind}>{error}</div>
           ))}
         </div>
         <button type="submit">Login</button>

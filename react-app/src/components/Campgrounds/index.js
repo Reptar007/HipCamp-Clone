@@ -24,7 +24,7 @@ function AllCampgrounds() {
     useEffect(() => {
         const imageIdx = setInterval(() =>{
             setCount(count === images.length-1 ? 0 : count+1)
-        }, 10000)
+        }, 5000)
         
         return () => clearInterval(imageIdx)
     },)
