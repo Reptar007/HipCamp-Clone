@@ -35,7 +35,7 @@ function SingleCampsite() {
     },[])    
 
     let content;
-    let parking = camp.Amenities.find(amenity => amenity.id === 11)
+    let parking = camp?.Amenities.find(amenity => amenity.id === 11)
     if(parking) {
       content = (
         <>
