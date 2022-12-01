@@ -74,7 +74,6 @@ const SignUpForm = () => {
           placeholder="Confirm Password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
-          required={true}
           ></input>
           <div>
             {errors.map((error, ind) => (
