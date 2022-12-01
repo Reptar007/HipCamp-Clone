@@ -58,3 +58,35 @@ Hosted with:
     <img src="https://img.shields.io/badge/Facebook-%231877F2.svg?style=for-the-badge&logo=Facebook&logoColor=white" alt="Facebook Badge"/>
   </a>
 </div>
+
+***
+
+[USER STORIES](https://github.com/Reptar007/HipCamp-Clone/wiki/User-Stories)
+
+Agile framework to visualize what the workflow should be
+
+***
+
+[WIRE FRAME](https://github.com/Reptar007/HipCamp-Clone/wiki/Wire-Frame)
+
+A visualization of what the app will look like
+
+***
+
+[API DOCUMENTATION](https://github.com/Reptar007/HipCamp-Clone/wiki/Backend-API-Routes)
+
+Documentation of the API routes used to make requests to the database.
+
+***
+
+[DATABASE SCHEMA](https://github.com/Reptar007/HipCamp-Clone/wiki/Schema)
+
+SQLite3 database schema.
+
+***
+
+[FEATURE LIST](https://github.com/Reptar007/HipCamp-Clone/wiki/MVP-Feature-List)
+
+List of the functional features of the app. 
+
+***
