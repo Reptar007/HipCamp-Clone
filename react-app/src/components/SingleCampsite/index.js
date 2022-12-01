@@ -33,6 +33,24 @@ function SingleCampsite() {
         dispatch(getSingleCampgroundThunk(+campgroundId))
         dispatch(getReviewsByCampgroundThunk(+campgroundId));
     },[])    
+
+    let content;
+    let parking = camp.Amenities.find(amenity => amenity.id === 11)
+    if(parking) {
+      content = (
+        <>
+          <i class="fa-solid fa-car"></i>
+          <h4> Parking </h4>
+        </>
+      )
+    } else {
+      content = (
+        <>
+          <i class="fa-thin fa-person-walking"></i>
+          <h4> Walk to </h4>
+        </>
+      );
+    }
     
 
     return (
@@ -89,15 +107,14 @@ function SingleCampsite() {
                   </div>
                   <div className="area_icons_sites">
                     <i class="fa-light fa-map-pin"></i>
-                    <h4> sites</h4>
+                    <h4> {camp?.sites} sites</h4>
                   </div>
                   <div className="area_icons_guest">
                     <i class="fa-thin fa-people"></i>
-                    <h4> guests per site</h4>
+                    <h4> {camp?.guests} guests per site</h4>
                   </div>
                   <div className="area_icons_parking">
-                    <i class="fa-solid fa-car"></i>
-                    <h4> Parking </h4>
+                    {content}
                   </div>
                 </div>
               </div>

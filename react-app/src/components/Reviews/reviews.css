@@ -125,3 +125,12 @@ input[type="radio"] {
 .review_buttons button:hover {
     transform: scale(1.04);
 }
+
+.no_form {
+    height: 5rem;
+}
+
+.no_form > h4 {
+    padding: 16px;
+    color: rgba(0, 0, 0, 0.5);
+}

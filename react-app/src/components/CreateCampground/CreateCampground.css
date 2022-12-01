@@ -37,6 +37,10 @@
     padding-bottom: 0.5rem;
 }
 
+.createform>form h6 {
+    padding-bottom: 0.5rem;
+}
+
 .createform>form p {
     padding-left: 1rem;
 }
@@ -44,7 +48,6 @@
 .createform>form input {
     width: 100%;
     outline: none;
-    border: 1px solid rgba(40, 64, 11, 0.5);
     padding: 12px 20px;
     margin-bottom: 10px;
     background: white;
@@ -54,7 +57,6 @@
 .createform>form textarea {
     width: 100%;
     outline: none;
-    border: 1px solid rgba(40, 64, 11, 0.5);
     padding: 12px 20px;
     margin-bottom: 10px;
     background-color: white;
@@ -84,7 +86,9 @@
 .time {
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    gap: 50%;
+    justify-content: center;
+    padding: 10px;
 }
 
 .time select {
@@ -135,4 +139,33 @@
     gap: 20px;
     width: 130%;
     max-height: fit-content;
+}
+
+.review h6 {
+    text-align: left;
+}
+
+.form_nav {
+    display: flex;
+    gap: 1rem;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.form_nav h4 {
+    cursor: pointer;
+}
+
+.selected {
+    color: #ECA72C;
+}
+
+.numbers {
+    display: flex;
+    gap: 1rem;
+}
+
+.activity_review_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
