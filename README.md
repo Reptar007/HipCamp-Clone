@@ -1,4 +1,12 @@
-# HipCamp-Clone
+# Contempo
+![image](https://i.imgur.com/YqX8A5A.png)
+
+***
+# Hipcamp Clone
+
+Contempo is a full-stack application that is based on Hipcamp. On Contempo, a user is able to create, see, edit and delete a campground. Additionally, a user is able to leave a wonderful review on a campsite. Visit [Contempo](https://contempo.onrender.com/) to see what the hype is about!
+
+***
 
 ## Getting Started
 
