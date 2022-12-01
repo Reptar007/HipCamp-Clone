@@ -31,7 +31,7 @@ function SingleCampsite() {
 
     useEffect(() => {
         dispatch(getSingleCampgroundThunk(+campgroundId))
-        dispatch(getReviewsByCampgroundThunk(+campgroundId));
+        dispatch(getReviewsByCampgroundThunk(camp?.id));
     },[])    
 
     let content;
