@@ -15,10 +15,10 @@ function Reviews() {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const reviews = useSelector(state => Object.values(state.reviews.allreviews))
+    const reviews = useSelector(state => Object.values(state?.reviews?.allreviews))
     const camp = useSelector(state=> state?.campgrounds?.singleCamp)
     const user = useSelector(state => state.session.user)
-    const found = reviews.some(review => review?.author_id=== user?.id)
+    const found = reviews?.some(review => review?.author_id=== user?.id)
 
     useEffect(() => {
       const errors = [];
