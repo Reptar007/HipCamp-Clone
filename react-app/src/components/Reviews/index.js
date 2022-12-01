@@ -106,15 +106,15 @@ function Reviews() {
       <div className="reviews_container">
         {content}
         <div className="reviews_wrapper">
-          <h3>{reviews.length} Written Reviews</h3>
+          <h3>{reviews?.length} Written Reviews</h3>
           <div className="reviews_body">
-            {reviews.map((review) => (
+            {reviews?.map((review) => (
               <div className="single_review">
                 <div className="single_review_author">
-                  {review.author.username}
+                  {review?.author?.username}
                 </div>
                 <div className="single_review_body">{review.body}</div>
-                {user?.id === review.author_id && (
+                {user?.id === review?.author_id && (
                   <div className="review_buttons">
                     <ReviewFormModal camp={camp} review={review} />
                     <button
