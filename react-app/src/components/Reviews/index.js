@@ -113,7 +113,7 @@ function Reviews() {
                 <div className="single_review_author">
                   {review?.author?.username}
                 </div>
-                <div className="single_review_body">{review.body}</div>
+                <div className="single_review_body">{review?.body}</div>
                 {user?.id === review?.author_id && (
                   <div className="review_buttons">
                     <ReviewFormModal camp={camp} review={review} />

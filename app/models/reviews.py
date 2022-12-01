@@ -13,6 +13,7 @@ class Review(db.Model):
     body = db.Column(db.String, nullable=False)
 
     campground = db.relationship("Campground", back_populates='review')
+    author = db.relationship("User", back_populates='review')
 
     def to_dict(self):
         return {
@@ -20,5 +21,6 @@ class Review(db.Model):
             'author_id' : self.author_id,
             'campground_id' : self.campground_id,
             'rating' : self.rating,
-            'body' : self.body
+            'body' : self.body,
+            'author' : self.author.to_dict()
         }

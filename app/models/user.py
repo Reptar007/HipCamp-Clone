@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     spot = db.relationship("Campground", back_populates='host')
+    review = db.relationship("Review", back_populates='author')
 
     @property
     def password(self):

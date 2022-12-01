@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import db, Review
+from app.models import db, Review, User
 from app.forms.review_form import ReviewForm
 
 reviews_routes = Blueprint('reviews', __name__) 
@@ -23,6 +23,14 @@ def all_reveiws():
     for review in reviews:
         reviews_parsed[review.id] = review.to_dict()
     return reviews_parsed
+
+@reviews_routes.route('/campground/<int:id>')
+def get_reviews_by_campground(id):
+    reviews = Review.query.filter_by(campground_id=id)
+    parsed_dict = {}
+    for review in reviews:
+        parsed_dict[review.id] = review.to_dict()
+    return parsed_dict
 
 @reviews_routes.route('/<int:id>')
 @login_required
