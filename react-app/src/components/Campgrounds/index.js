@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {NavLink} from 'react-router-dom'
 import {getAllCampgroundsThunk, getSingleCampgroundThunk} from '../../store/campgrounds'
+import { getReviewsByCampgroundThunk } from '../../store/reviews'
 import './campgrounds.css'
 
 let images = [
@@ -59,6 +60,7 @@ function AllCampgrounds() {
                         <div 
                             onClick={() => {
                                 dispatch(getSingleCampgroundThunk(camp.id))
+                                dispatch(getReviewsByCampgroundThunk(camp.id));
     
                             }}
                             className='campsite_container'
