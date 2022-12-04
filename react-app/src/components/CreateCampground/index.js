@@ -41,11 +41,11 @@ function CreateCampground({ camp, update, setShowModal }) {
       if(state.name.length > 50) errors.name = "Oh no name longer than 50 characters";
       if(state.description.length === 0) errors.description = "Opps description needs be filled"
       if(state.description.length > 250) errors.description = "Oh no description longer than 250 characters";
-      if(!/^\d+$/.test(state.sites)) errors.sites = "Oh no sites needs to be a number"
-      if (!/^\d+$/.test(state.guests)) errors.guests = "Oh no guests needs to be a number";
-      if (!/^\d+$/.test(state.price)) errors.price = "Oh no price needs to be a number";
-      if (!/^\d+$/.test(state.min_nights)) errors.min_nights = "Oh no minimum nights needs to be a number";
-      if (!/^\d+$/.test(state.max_nights)) errors.max_nights = "Oh no maximum nights needs to be a number";
+      if(!/^\d+$/.test(state.sites)) errors.sites = "Oh no sites needs to be a positive number";
+      if (!/^\d+$/.test(state.guests)) errors.guests = "Oh no guests needs to be a positive number";
+      if (!/^\d+$/.test(state.price)) errors.price = "Oh no price needs to be a positive  number";
+      if (!/^\d+$/.test(state.min_nights)) errors.min_nights = "Oh no minimum nights needs to be a positive number";
+      if (!/^\d+$/.test(state.max_nights)) errors.max_nights = "Oh no maximum nights needs to be a positive number";
       if (+state.min_nights > +state.max_nights) errors.min_nights = "Oh no minimum nights has to be smaller than maximum nights"
       if(state.checkin_time === '00:00') errors.checkin_time = "Oh no you need to pick a checkin time"
       if (state.checkout_time === "00:00") errors.checkout_time = "Oh no you need to pick a checkout time";
