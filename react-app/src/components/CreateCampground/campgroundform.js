@@ -29,7 +29,7 @@ function CampgroundForm({ next, back, change, state, hasSubmitted, validateError
       )}
 
       <h5 className={hasSubmitted && validateErrors.sites ? "errors" : ""}>
-        Numer of Guest per Site
+        Number of Guest per Site
       </h5>
       <input
         type="text"

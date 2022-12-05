@@ -165,7 +165,7 @@ function ActivityAmenityForm({next, back, state, setState}) {
             data-value={8}
             onClick={(e) => setAmen(e)}
           >
-            toliets
+            toilets
           </div>
           <div
             className={
