@@ -41,9 +41,10 @@ class Campground(db.Model):
     checkout_time = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
 
-    host = db.relationship("User", back_populates='spot')
-    review = db.relationship("Review", back_populates='campground', cascade="all, delete")
-    image = db.relationship("CampgroundImage", back_populates='spot', cascade="all, delete")
+    host = db.relationship("User", lazy='joined', back_populates='spot')
+    review = db.relationship("Review",lazy=False, back_populates='campground', cascade="all, delete")
+    image = db.relationship("CampgroundImage", lazy=False, back_populates='spot', cascade="all, delete")
+    bookings = db.relationship('Booking', back_populates='camps', lazy=False, cascade='all, delete')
 
     activity = db.relationship('Activity',
             secondary = campground_activities,

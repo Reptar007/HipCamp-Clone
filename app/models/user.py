@@ -14,8 +14,9 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    spot = db.relationship("Campground", back_populates='host')
-    review = db.relationship("Review", back_populates='author')
+    spot = db.relationship("Campground", back_populates='host', lazy=False, cascade='all, delete')
+    review = db.relationship("Review", back_populates='author', lazy=False, cascade='all, delete')
+    bookings = db.relationship('Booking', back_populates='reservation', lazy=False, cascade='all, delete')
 
     @property
     def password(self):
