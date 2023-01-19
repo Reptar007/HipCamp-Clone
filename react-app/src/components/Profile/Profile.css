@@ -141,3 +141,18 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.profile_nav {
+    display: flex;
+    gap: 20px;
+    align-content: center;
+}
+
+.profile_nav>h3:hover {
+    cursor: pointer;
+    color: #00C585;
+}
+
+.selected {
+    color: #00C585;
+}

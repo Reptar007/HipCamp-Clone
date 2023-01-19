@@ -85,5 +85,6 @@ class Campground(db.Model):
             'avg rating' : self.avg(),
             'Images' : [image.to_dict() for image in self.image],
             'Amenities': [amenity.to_dict() for amenity in self.amenity],
-            'Activites': [activity.to_dict() for activity in self.activity]
+            'Activites': [activity.to_dict() for activity in self.activity],
+            'bookings': [booking.to_dict() for booking in self.bookings]
         }

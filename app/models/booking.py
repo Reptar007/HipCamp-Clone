@@ -23,7 +23,7 @@ class Booking(db.Model):
         return {
             'id': self.id,
             'userId': self.userId,
-            'spotId': self.spotId,
+            'campId': self.campId,
             'start_date': self.start_date,
             'end_date': self.end_date,
             'createdAt': json.dumps(self.createdAt, default=str),
