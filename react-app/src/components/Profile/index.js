@@ -3,18 +3,20 @@ import { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCampgroundsThunk, deleteCampsiteThunk } from '../../store/campgrounds';
 import { getAllBookings } from '../../store/booking';
+import Bookings from '../Bookings';
 
 import UpdateCampsite from '../UpdateCampsiteModal';
 import './Profile.css'
 function Profile() {
 
     const [page, setPage] = useState(1)
+    const [nights, setNights] = useState()
     const user = useSelector(state => state?.session.user)
     const camps = useSelector(state => Object.values(state?.campgrounds.allCampgrounds))
     const bookings = useSelector(state => Object.values(state.bookings.allBookings))
     const userCamps = camps?.filter(camp => camp.host == user.id)
     const userBookings = bookings?.filter(booking => booking.userId == user.id)
-    
+    console.log(userBookings)
     const dispatch = useDispatch()
 
     const dateFixer = (date) => {
@@ -22,6 +24,11 @@ function Profile() {
       let fixed = split.slice(0,4)
       return fixed.join(' ')
     }
+
+    useEffect(() => {
+        dispatch(getAllCampgroundsThunk())
+        dispatch(getAllBookings())
+    }, [dispatch])
 
     let content;
     switch(page) {
@@ -54,31 +61,17 @@ function Profile() {
       case 2:
         content = (
           <>
-          {userBookings?.map(booking => (
-            <div key={booking.id} className='profile_camp'>
-              <div className='profile_img'>
-                <img src={booking?.camp?.Images[0]?.image_url} alt='images' />
-              </div>
-              <div className='camp_desc'>
-                <h4>{booking?.camp?.name}</h4>
-                <h5>{booking?.camp?.location}</h5>
-                <h5>Dates You're Staying:</h5>
-                <h5>{dateFixer(booking.start_date)} - {dateFixer(booking.end_date)}</h5>
-                
-              </div>
-            </div>
-          ))}
+            {userBookings?.map((booking) => (
+              <Bookings booking={booking} />
+            ))}
           </>
-        )
+        );
+        break
       default:
-        
+        return null
     }
 
 
-    useEffect(() => {
-        dispatch(getAllCampgroundsThunk())
-        dispatch(getAllBookings())
-    }, [])
 
     return (
       <div className="profile_container">

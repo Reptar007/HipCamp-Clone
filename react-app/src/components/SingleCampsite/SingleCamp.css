@@ -70,7 +70,7 @@
 }
 
 .camp_info {
-    flex: 60;
+    flex: 70;
     padding: 10px;
 }
 
@@ -416,5 +416,23 @@
 }
 
 .bookings {
-    flex: 40;
+    flex: 30;
+}
+
+.calendar {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calendar>h3 {
+    align-self: flex-start;
+}
+
+.rdrCalendarWrapper {
+    background: none !important;
+    margin: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }

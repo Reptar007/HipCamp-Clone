@@ -3,11 +3,16 @@ import {useSelector, useDispatch } from 'react-redux'
 import {useParams} from 'react-router-dom'
 import { getSingleCampgroundThunk } from '../../store/campgrounds'
 import { getReviewsByCampgroundThunk } from '../../store/reviews'
+import BookingForm from '../Bookings/bookingform'
 import Reviews from '../Reviews'
 import Essentials from './essentials'
 import Amenities from './amenities'
 import Activities from './activities'
 import './SingleCamp.css'
+
+import { DateRange } from 'react-date-range'
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 
 function SingleCampsite() {
     const [current, setCurrent] = useState(0)
@@ -51,6 +56,42 @@ function SingleCampsite() {
         </>
       );
     }
+
+    const [selectDate, setSelectDate] = useState(false);
+    const today = new Date();
+    const tomorrow = new Date();
+    const nextDay = new Date();
+    tomorrow.setHours(tomorrow.getHours() + 7);
+    nextDay.setHours(nextDay.getHours() + 31);
+    const [checkIn, setCheckIn] = useState(tomorrow);
+    const [checkOut, setCheckOut] = useState(nextDay);
+    
+    const [dates, setDates] = useState([
+      {
+        startDate: tomorrow,
+        endDate: nextDay,
+        key: "selection",
+      },
+    ]);
+
+     useEffect(() => {
+       if (dates[0]?.startDate !== tomorrow) {
+         setCheckIn(dates[0]?.startDate?.toISOString()?.slice(0, 10));
+         setCheckOut(dates[0]?.endDate?.toISOString()?.slice(0, 10));
+       }
+     }, [dates]);
+
+     useEffect(() => {
+       if (checkIn !== today) {
+         setDates([
+           {
+             startDate: new Date(checkIn),
+             endDate: new Date(checkOut),
+             key: "selection",
+           },
+         ]);
+       }
+     }, [selectDate]);
     
 
     return (
@@ -113,9 +154,7 @@ function SingleCampsite() {
                     <i class="fa-thin fa-people"></i>
                     <h4> {camp?.guests} guests per site</h4>
                   </div>
-                  <div className="area_icons_parking">
-                    {content}
-                  </div>
+                  <div className="area_icons_parking">{content}</div>
                 </div>
               </div>
               <Essentials camp={camp} />
@@ -147,9 +186,25 @@ function SingleCampsite() {
               </div>
             </div>
             <Activities camp={camp} />
+            <div className="calendar">
+              <h3>Book Today </h3>
+              <DateRange
+                ranges={dates}
+                editableDateInputs={false}
+                moveRangeOnFirstSelection={false}
+                rangeColors={["black"]}
+                onChange={(e) => setDates([e.selection])}
+                showDateDisplay={false}
+                months={2}
+                minDate={new Date()}
+                direction={"horizontal"}
+              />
+            </div>
             <Reviews />
           </div>
-          <div className="bookings"></div>
+          <div className="bookings">
+            <BookingForm checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut}/>
+          </div>
         </div>
       </div>
     );

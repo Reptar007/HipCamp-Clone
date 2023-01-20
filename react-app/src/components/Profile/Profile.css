@@ -156,3 +156,7 @@
 .selected {
     color: #00C585;
 }
+
+.small {
+    font-size: x-small;
+}

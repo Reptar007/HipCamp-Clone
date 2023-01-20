@@ -1,0 +1,126 @@
+.booking-container {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin-top: 1rem;
+    margin-left: 1rem;
+    border-radius: 5px;
+    height: fit-content;
+    width: 20rem;
+    padding: 1.5rem;
+    position: sticky;
+    top: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 2px 1px 4px 1px rgba(0, 0, 0, 0.5);
+}
+
+.booking-header {
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    justify-content: space-between;
+}
+
+.booking-review {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+}
+
+.grey {
+    font-size: 15px;
+}
+
+.create-bookings{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.dates_container {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    display: flex;
+    border-radius: 20px;
+    height: 4.5rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.date_input_containers {
+    text-align: left;
+    padding-left: 8px;
+}
+
+.date_input_containers>input {
+    border: none;
+    background: none;
+}
+
+.date_input_containers:nth-last-child(odd) {
+    border-left: 1px solid black;
+    
+}
+
+.cart-bottom {
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+    padding: 10px 0;
+}
+
+.cart-calc {
+    font-size: large;
+}
+
+.cart-font {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.cart-total {
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+    font-size: large;
+    font-weight: bold;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.create-booking-submit {
+    color: white;
+    background: #00C585;
+    height: 2rem;
+    padding: 10px 20px;
+    border: none;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.create-booking-error {
+    color: white;
+    background: red;
+    height: 2rem;
+    padding: 10px 20px;
+    border: none;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.error-list {
+    list-style: none;
+    font-size: smaller;
+    padding-bottom: 10px;
+    text-align: center;
+    color: red;
+}
+
+
+
