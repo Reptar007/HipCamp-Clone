@@ -41,9 +41,10 @@ class Campground(db.Model):
     checkout_time = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
 
-    host = db.relationship("User", back_populates='spot')
-    review = db.relationship("Review", back_populates='campground', cascade="all, delete")
-    image = db.relationship("CampgroundImage", back_populates='spot', cascade="all, delete")
+    host = db.relationship("User", lazy='joined', back_populates='spot')
+    review = db.relationship("Review",lazy=False, back_populates='campground', cascade="all, delete")
+    image = db.relationship("CampgroundImage", lazy=False, back_populates='spot', cascade="all, delete")
+    bookings = db.relationship('Booking', back_populates='camp', lazy=False, cascade='all, delete')
 
     activity = db.relationship('Activity',
             secondary = campground_activities,
@@ -81,8 +82,16 @@ class Campground(db.Model):
             'checkin_time': self.checkin_time,
             'checkout_time': self.checkout_time,
             'description': self.description,
-            'avg rating' : self.avg(),
+            'avgRating' : self.avg(),
             'Images' : [image.to_dict() for image in self.image],
             'Amenities': [amenity.to_dict() for amenity in self.amenity],
             'Activites': [activity.to_dict() for activity in self.activity]
+        }
+
+    def to_dict_booking(self):
+        return {
+            'name': self.name,
+            'location': self.location,
+            'image' : self.image[0].image_url,
+            'price' : self.price
         }

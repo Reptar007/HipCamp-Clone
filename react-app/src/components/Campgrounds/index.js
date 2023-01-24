@@ -16,11 +16,10 @@ let images = [
 function AllCampgrounds() {
     const dispatch = useDispatch()
     const [count, setCount] = useState(0)
-
     
     useEffect(() => {
         dispatch(getAllCampgroundsThunk())
-    }, [])
+    }, [dispatch])
     
     useEffect(() => {
         const imageIdx = setInterval(() =>{
@@ -56,7 +55,8 @@ function AllCampgrounds() {
             <h2>Where to go:</h2>
             <div className='campsites'>
                 {campgrounds.map(camp => (
-                    <NavLink to={`campgrounds/${camp.id}`}>
+                    <NavLink key={camp.id}
+                    to={`campgrounds/${camp.id}`}>
                         <div 
                             onClick={() => {
                                 dispatch(getSingleCampgroundThunk(camp.id))

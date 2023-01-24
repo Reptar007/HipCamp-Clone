@@ -2,18 +2,70 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCampgroundsThunk, deleteCampsiteThunk } from '../../store/campgrounds';
+import { getAllBookings } from '../../store/booking'
+import Bookings from '../Bookings';
+
+
 import UpdateCampsite from '../UpdateCampsiteModal';
 import './Profile.css'
 function Profile() {
+
+    const [page, setPage] = useState(1)
     const user = useSelector(state => state?.session.user)
     const camps = useSelector(state => Object.values(state?.campgrounds.allCampgrounds))
-    const userCamps = camps?.filter(camp => camp.host == user.id)
-
+    // const bookings = useSelector(state => Object.values(state?.bookings?.allBookings))
+    const userCamps = camps?.filter(camp => camp.host === +user.id)
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getAllCampgroundsThunk())
-    }, [])
+    }, [dispatch])
+
+    useEffect(() => {
+        dispatch(getAllBookings())
+    },[dispatch])
+    
+
+    let content;
+    switch(page) {
+      case 1:
+        content = (
+          <>
+            {userCamps?.map((camp) => (
+              <div className="profile_camp">
+                <div className="profile_img">
+                  <img src={camp?.Images[0]?.image_url} alt="images " />
+                </div>
+                <div className="camp_desc">
+                  <h4>{camp?.name}</h4>
+                  <h5>{camp?.location}</h5>
+                  <h5>${camp?.price} per night</h5>
+                  <div className="camp_buttons">
+                    <UpdateCampsite camp={camp} />
+                    <button
+                      onClick={() => dispatch(deleteCampsiteThunk(camp.id))}
+                    >
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </>
+        )
+        break
+      case 2:
+        content = (
+          <>
+            {/* {bookings?.map((booking) => (
+              <Bookings booking={booking} />
+            ))} */}
+          </>
+        );
+        break
+      default:
+        return null
+    }
 
     return (
       <div className="profile_container">
@@ -25,7 +77,7 @@ function Profile() {
               </div>
               <div className="user_title">
                 <h5>Welcome Back!</h5>
-                <h3>{user.username}</h3>
+                <h3>{user?.username}</h3>
               </div>
             </div>
             <div className="profile_email">

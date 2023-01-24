@@ -9,11 +9,7 @@ function Review({back, state, update, hasSubmitted, validateErrors}) {
       max_nights,
       checkout_time,
       checkin_time,
-      description,
-      img1,
-      img2,
-      img3,
-      img4
+      description
     } = state;
 
     const activityname = (id) => {

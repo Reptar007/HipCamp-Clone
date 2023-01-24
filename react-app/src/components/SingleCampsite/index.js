@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import {useSelector, useDispatch } from 'react-redux'
 import {useParams} from 'react-router-dom'
 import { getSingleCampgroundThunk } from '../../store/campgrounds'
@@ -19,7 +19,6 @@ function SingleCampsite() {
     const camp = useSelector(state => state?.campgrounds?.singleCamp?.camp)
     const host = useSelector(state => state.campgrounds.singleCamp.host)
     const length = camp?.Images?.length
-    
 
     const nextSlide = () => {
         setCurrent(current === length - 1 ? 0 : current + 1)
@@ -31,8 +30,11 @@ function SingleCampsite() {
 
     useEffect(() => {
         dispatch(getSingleCampgroundThunk(+campgroundId))
-        dispatch(getReviewsByCampgroundThunk(+campgroundId));
-    },[])    
+    },[dispatch,campgroundId])
+
+    useMemo(() => {
+        return dispatch(getReviewsByCampgroundThunk(+campgroundId))
+    },[campgroundId, dispatch])
 
     let content;
     let parking = camp?.Amenities.find(amenity => amenity.id === 11)
@@ -51,6 +53,42 @@ function SingleCampsite() {
         </>
       );
     }
+
+    const [selectDate, setSelectDate] = useState(false);
+    const today =  new Date()
+    const tomorrow = new Date();
+    const nextDay = new Date();
+    tomorrow.setHours(tomorrow.getHours() + 7);
+    nextDay.setHours(nextDay.getHours() + 100);
+    const [checkIn, setCheckIn] = useState(tomorrow);
+    const [checkOut, setCheckOut] = useState(nextDay);
+    
+    const [dates, setDates] = useState([
+      {
+        startDate: tomorrow,
+        endDate: nextDay,
+        key: "selection",
+      },
+    ]);
+
+     useEffect(() => {
+       if (dates[0]?.startDate !== tomorrow) {
+         setCheckIn(dates[0]?.startDate?.toISOString()?.slice(0, 10));
+         setCheckOut(dates[0]?.endDate?.toISOString()?.slice(0, 10));
+       }
+     }, [dates]);
+
+     useEffect(() => {
+       if (checkIn !== today) {
+         setDates([
+           {
+             startDate: new Date(checkIn),
+             endDate: new Date(checkOut),
+             key: "selection",
+           },
+         ]);
+       }
+     }, [selectDate]);
     
 
     return (
@@ -149,7 +187,9 @@ function SingleCampsite() {
             <Activities camp={camp} />
             <Reviews />
           </div>
-          <div className="bookings"></div>
+          <div className="bookings">
+            <BookingForm checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut}/>
+          </div>
         </div>
       </div>
     );

@@ -45,6 +45,7 @@ const update = campground => {
 /* ----- THUNKS CREATOR ----- */
 
 export const getAllCampgroundsThunk = () => async dispatch => {
+
     const res = await fetch('/api/campgrounds/')
 
     if(res.ok) {
