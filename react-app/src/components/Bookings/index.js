@@ -1,7 +1,11 @@
 import { useState,useEffect } from "react"
-
+import { useDispatch} from 'react-redux'
+import {removeBookingThunk} from '../../store/booking'
 
 function Bookings({ booking }) {
+  
+
+  const dispatch = useDispatch()
     const [nights, setNights] = useState();
     const dateFixer = (date) => {
       let split = date.split(" ");
@@ -15,7 +19,6 @@ function Bookings({ booking }) {
         );
     },[booking])
 
-    console.log(nights)
 
     return (
       <div key={booking.id} className="profile_camp">
@@ -39,7 +42,9 @@ function Bookings({ booking }) {
               parseInt(booking.camp.price * nights * 0.14)}
           </h5>
           <div className="camp_buttons">
-            <button>
+            <button
+              onClick={() => dispatch(removeBookingThunk(booking.id))}
+            >
               <i class="fa-solid fa-trash-can"></i>
             </button>
           </div>

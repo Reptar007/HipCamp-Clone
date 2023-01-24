@@ -14,10 +14,12 @@ booking_routes = Blueprint('bookings', __name__)
 def getAllBookings():
     user_bookings = User.query.get(current_user.id).bookings
     bookings = [booking.to_dict() for booking in user_bookings]
+    booking_parsed = {}
     for booking in bookings:
         camp = Campground.query.get(booking['campId'])
         booking['camp'] = camp.to_dict()
-    return {'bookings': bookings}
+        booking_parsed[booking.id] = booking
+    return booking_parsed
 
 ##GET one booking
 @booking_routes.route('/<int:id>')

@@ -10,25 +10,18 @@ import './Profile.css'
 function Profile() {
 
     const [page, setPage] = useState(1)
-    const [nights, setNights] = useState()
     const user = useSelector(state => state?.session.user)
-    const camps = useSelector(state => Object.values(state?.campgrounds.allCampgrounds))
-    const bookings = useSelector(state => Object.values(state.bookings.allBookings))
-    const userCamps = camps?.filter(camp => camp.host == user.id)
-    const userBookings = bookings?.filter(booking => booking.userId == user.id)
-    console.log(userBookings)
-    const dispatch = useDispatch()
+    const camps = useSelector(state => Object.values(state?.campgrounds?.allCampgrounds))
+    const bookings = useSelector(state => Object.values(state?.bookings?.allBookings))
+    const userCamps = camps?.filter(camp => camp.host === +user.id)
+    const userBookings = bookings?.filter(booking => booking.userId === +user.id)
 
-    const dateFixer = (date) => {
-      let split = date.split(' ')
-      let fixed = split.slice(0,4)
-      return fixed.join(' ')
-    }
+    const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getAllCampgroundsThunk())
         dispatch(getAllBookings())
-    }, [dispatch])
+    }, [])
 
     let content;
     switch(page) {
