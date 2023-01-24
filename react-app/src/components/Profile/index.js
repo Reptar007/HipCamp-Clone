@@ -14,7 +14,7 @@ function Profile() {
     const camps = useSelector(state => Object.values(state?.campgrounds?.allCampgrounds))
     const bookings = useSelector(state => Object.values(state?.bookings?.allBookings))
     const userCamps = camps?.filter(camp => camp.host === +user.id)
-    const userBookings = bookings?.filter(booking => booking.userId === +user.id)
+  
 
     const dispatch = useDispatch()
 
@@ -28,7 +28,7 @@ function Profile() {
       case 1:
         content = (
           <>
-            {userCamps?.map((camp) => (
+            { userCamps.length > 0 ?userCamps?.map((camp) => (
               <div className="profile_camp">
                 <div className="profile_img">
                   <img src={camp?.Images[0]?.image_url} alt="images " />
@@ -47,16 +47,21 @@ function Profile() {
                   </div>
                 </div>
               </div>
-            ))}
+            )) :
+            <h1>Don't be shy click 'Host' above to start making money off your campsite</h1>
+          }
           </>
         )
         break
       case 2:
         content = (
           <>
-            {userBookings?.map((booking) => (
+            <h6>*to modify a booking you must first cancel then go back and select new dates from your desired campsite</h6>
+            {bookings.length > 0 ? bookings?.map((booking) => (
               <Bookings booking={booking} />
-            ))}
+            )) : 
+            <h1>Explore our camps and book today!</h1>
+          }
           </>
         );
         break

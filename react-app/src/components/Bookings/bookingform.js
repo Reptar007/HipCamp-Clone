@@ -57,8 +57,6 @@ function BookingForm({ checkIn, checkOut, setCheckIn, setCheckOut }) {
     return dateErrors;
   },[nights,checkIn,checkOut,max,min])
   
-
-  console.log(hasSubmitted)
   const handleSubmit = async (e) => {
     e.preventDefault();
     setHasSubmitted(true);
@@ -79,17 +77,20 @@ function BookingForm({ checkIn, checkOut, setCheckIn, setCheckOut }) {
     if (newbooking.errors) {
       let spliterror = newbooking.errors[0].split(":");
       let error = spliterror[1];
+      setIsLoading(false)
       setErrors([error]);
       return;
     }
     if (newbooking && errors.length === 0) {
       history.push(`/profile`);
+      
     }
-
+    
     setHasSubmitted(false)
     setErrors([])
   };
-
+  
+  console.log(errors)
   return (
     <>
       {isLoading ? (

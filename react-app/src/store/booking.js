@@ -1,4 +1,4 @@
-const All_BOOKINGS = 'bookings/ALL'
+const USER_BOOKINGS = 'bookings/ALL'
 const CREATE_BOOKING = 'bookings/POST'
 const REMOVE_BOOKING = "Bookings/REMOVE_BOOKING";
 
@@ -6,7 +6,7 @@ const REMOVE_BOOKING = "Bookings/REMOVE_BOOKING";
 
 const get_all = bookings => {
     return {
-        type: All_BOOKINGS,
+        type: USER_BOOKINGS,
         bookings
     }
 }
@@ -88,14 +88,14 @@ const initialState = { allBookings: {}}
 const bookingReducer = (state = initialState, action) => {
     let bookingStateObj = {...state}
     switch (action.type) {
-        case All_BOOKINGS:
+        case USER_BOOKINGS:
           bookingStateObj.allBookings = action.bookings
           return bookingStateObj
         case CREATE_BOOKING:
             bookingStateObj.allBookings[action.bookings.id] = action.bookings
             return bookingStateObj
         case REMOVE_BOOKING:
-          delete bookingStateObj.allBookings[action.id]
+          delete bookingStateObj.allBookings[action.booking]
           return bookingStateObj
         default:
             return state

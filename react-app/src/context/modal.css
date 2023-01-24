@@ -51,6 +51,16 @@
     position: relative;
 }
 
+#modal-content>form>h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+}
+
+#modal-content>form>h3 {
+    margin-bottom: 1.2rem;
+    color: red;
+}
+
 #modal-content>form>h1>img {
     position: absolute;
     height: 3rem;

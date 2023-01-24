@@ -56,7 +56,7 @@ function AllCampgrounds() {
             <h2>Where to go:</h2>
             <div className='campsites'>
                 {campgrounds.map(camp => (
-                    <NavLink to={`campgrounds/${camp.id}`}>
+                    <NavLink key={camp.id} to={`campgrounds/${camp.id}`}>
                         <div 
                             onClick={() => {
                                 dispatch(getSingleCampgroundThunk(camp.id))

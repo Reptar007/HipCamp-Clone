@@ -18,7 +18,8 @@ def getAllBookings():
     for booking in bookings:
         camp = Campground.query.get(booking['campId'])
         booking['camp'] = camp.to_dict()
-        booking_parsed[booking.id] = booking
+        booking_parsed[booking['id']] = booking
+        
     return booking_parsed
 
 ##GET one booking
@@ -110,8 +111,7 @@ def update_booking(id):
 @login_required
 def delete_booking(id):
     booking = Booking.query.get_or_404(id)
-    if booking:
-        db.session.delete(booking)
-        db.session.commit()
-        return {'message': 'booking was successfully deleted'}
-    return {'error': 'booking does not exist'}, 404
+    db.session.delete(booking)
+    db.session.commit()
+    return {'message': 'booking was successfully deleted'}
+ 

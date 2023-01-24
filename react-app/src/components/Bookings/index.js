@@ -1,17 +1,15 @@
 import { useState,useEffect } from "react"
-import { useDispatch} from 'react-redux'
-import {removeBookingThunk} from '../../store/booking'
+import DeleteBookingModal from "../DeleteBookingsModal"
 
 function Bookings({ booking }) {
   
-
-  const dispatch = useDispatch()
     const [nights, setNights] = useState();
     const dateFixer = (date) => {
       let split = date.split(" ");
       let fixed = split.slice(0, 4);
       return fixed.join(" ");
     };
+
 
     useEffect(() => {
         setNights(
@@ -42,11 +40,7 @@ function Bookings({ booking }) {
               parseInt(booking.camp.price * nights * 0.14)}
           </h5>
           <div className="camp_buttons">
-            <button
-              onClick={() => dispatch(removeBookingThunk(booking.id))}
-            >
-              <i class="fa-solid fa-trash-can"></i>
-            </button>
+            <DeleteBookingModal booking={booking}/>
           </div>
         </div>
       </div>
