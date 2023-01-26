@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import {useSelector, useDispatch } from 'react-redux'
 import {useParams} from 'react-router-dom'
 import { getSingleCampgroundThunk } from '../../store/campgrounds'
@@ -10,12 +10,16 @@ import Amenities from './amenities'
 import Activities from './activities'
 import './SingleCamp.css'
 
+import { DateContext } from '../../context/dates'
+
 import { DateRange } from 'react-date-range'
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
 function SingleCampsite() {
     const [current, setCurrent] = useState(0)
+
+    const { today, tomorrow, selectDate, checkIn, setCheckIn, checkOut, setCheckOut, dates, setDates} = useContext(DateContext)
 
     const dispatch = useDispatch()
 
@@ -33,6 +37,8 @@ function SingleCampsite() {
     const prevSlide = () => {
         setCurrent(current === 0 ? length - 1 : current - 1)
     }
+
+
 
     useEffect(() => {
         dispatch(getSingleCampgroundThunk(+campgroundId))
@@ -57,22 +63,7 @@ function SingleCampsite() {
       );
     }
 
-    const [selectDate, setSelectDate] = useState(false);
-    const today = new Date();
-    const tomorrow = new Date();
-    const nextDay = new Date();
-    tomorrow.setHours(tomorrow.getHours() + 7);
-    nextDay.setHours(nextDay.getHours() + 31);
-    const [checkIn, setCheckIn] = useState(tomorrow);
-    const [checkOut, setCheckOut] = useState(nextDay);
     
-    const [dates, setDates] = useState([
-      {
-        startDate: tomorrow,
-        endDate: nextDay,
-        key: "selection",
-      },
-    ]);
 
      useEffect(() => {
        if (dates[0]?.startDate !== tomorrow) {
@@ -203,7 +194,7 @@ function SingleCampsite() {
             <Reviews />
           </div>
           <div className="bookings">
-            <BookingForm checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut}/>
+            <BookingForm />
           </div>
         </div>
       </div>

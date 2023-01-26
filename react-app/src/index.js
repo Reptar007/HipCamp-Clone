@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import configureStore from './store';
 import { ModalProvider } from './context/Modal';
+import { DateProvider } from './context/dates';
 
 const store = configureStore();
 
@@ -12,9 +13,11 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <Suspense fallback={<div>Loading...</div>}>
-        <ModalProvider>
-          <App />
-        </ModalProvider>
+        <DateProvider>
+          <ModalProvider>
+            <App />
+          </ModalProvider>
+        </DateProvider>
       </Suspense>
     </Provider>
   </React.StrictMode>,

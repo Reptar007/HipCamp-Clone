@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { DateContext } from "../../context/dates";
 
 import { addBookingThunk } from "../../store/booking";
 import LoadingSpinner from "../Loading";
 
 import "./bookingform.css";
 
-function BookingForm({ checkIn, checkOut, setCheckIn, setCheckOut }) {
+function BookingForm() {
+
+  const {checkIn, checkOut, setCheckIn} = useContext(DateContext)
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -26,20 +29,24 @@ function BookingForm({ checkIn, checkOut, setCheckIn, setCheckOut }) {
   const max = camp?.max_nights;
 
   let sum = 0;
+
   reviews.forEach((review) => {
     sum += review.rating;
   });
 
   useEffect(() => {
+
     setAvg(parseFloat(sum / reviews.length).toFixed(2) || 0);
   }, [reviews,sum]);
 
   useEffect(() => {
+ 
     setNights((new Date(checkOut) - new Date(checkIn)) / (1000 * 3600 * 24));
   }, [checkIn, checkOut]);
 
 
   useEffect(() => {
+
     const dateErrors = [];
     if (!checkIn) {
       dateErrors.push("Please input a check-in date.");
@@ -72,6 +79,7 @@ function BookingForm({ checkIn, checkOut, setCheckIn, setCheckOut }) {
       start_date: checkIn,
       end_date: checkOut,
     };
+    console.log(payload)
 
     let newbooking = await dispatch(addBookingThunk(payload));
     if (newbooking.errors) {
@@ -90,7 +98,7 @@ function BookingForm({ checkIn, checkOut, setCheckIn, setCheckOut }) {
     setErrors([])
   };
   
-  console.log(errors)
+
   return (
     <>
       {isLoading ? (
